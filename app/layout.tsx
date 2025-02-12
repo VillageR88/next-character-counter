@@ -1,25 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Bellefair, Barlow, Barlow_Condensed } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 
-const bellefair = Bellefair({
+const dmSans = DM_Sans({
   display: 'swap',
-  weight: ['400'],
-  variable: '--font-bellefair',
-  subsets: ['latin', 'latin-ext'],
-});
-
-const barlow = Barlow({
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-barlow',
-  subsets: ['latin', 'latin-ext'],
-});
-
-const barlowCondensed = Barlow_Condensed({
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-barlow-condensed',
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  variable: '--font-dm-sans',
   subsets: ['latin', 'latin-ext'],
 });
 
@@ -39,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="og:image" content={undefined} />
       </head>
       <body
-        className={`${bellefair.variable} ${barlow.variable} ${barlowCondensed.variable} relative min-h-dvh flex-col overflow-x-clip bg-[url(../public/assets/images/bg-light-theme.png)] transition-all dark:bg-[url(../public/assets/images/bg-dark-theme.png)] md:min-h-dvh xl:py-10`}
+        className={`${dmSans.variable} relative flex min-h-dvh flex-col gap-[48px] overflow-x-clip bg-[url(../public/assets/images/bg-light-theme.png)] font-dmSans [transition:background_300ms] dark:bg-[url(../public/assets/images/bg-dark-theme.png)] md:min-h-dvh xl:py-10`}
       >
         {children}
       </body>

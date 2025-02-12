@@ -2,7 +2,6 @@
  @type {import('next').NextConfig}
  */
 const nextConfig = {
-  images: { unoptimized: true },
   trailingSlash: true,
   //distDir: 'next-in-browser-markdown-editor',
   reactStrictMode: true,
@@ -13,6 +12,5 @@ const nextConfig = {
 // nextConfig.assetPrefix = '/server/app';
 // nextConfig.basePath = '/server/app';
 //}
-
 
 module.exports = nextConfig;

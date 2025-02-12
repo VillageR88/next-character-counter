@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+  @apply whitespace-pre-wrap text-6xl font-[700] leading-[64px] tracking-[-1px];
+}
+
+textarea::placeholder {
+  @apply text-[#2A2B37] dark:text-[#E4E4EF];
+  transition: color 300ms;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  @apply appearance-none;
+}
+
+input[type='number'] {
+  @apply appearance-none;
+}
+
+div#character-div:has(input#character-limit:checked) label#max-char-container,
+input#max-char-input {
+  opacity: 1;
+  user-select: unset;
+  pointer-events: unset;
+}

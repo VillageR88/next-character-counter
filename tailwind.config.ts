@@ -16,9 +16,7 @@ const config: Config = {
         screenInBetween: '1024px',
       },
       fontFamily: {
-        bellefair: ['var(--font-bellefair)'],
-        barlow: ['var(--font-barlow)'],
-        barlowCondensed: ['var(--font-barlow-condensed)'],
+        dmSans: ['var(--font-dm-sans)'],
       },
       colors: {
         veryDarkNavy: '#0B0D17',
