@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="og:image" content={undefined} />
       </head>
       <body
-        className={`${bellefair.variable} ${barlow.variable} ${barlowCondensed.variable} relative min-h-dvh flex-col overflow-x-clip bg-white md:min-h-dvh xl:py-10`}
+        className={`${bellefair.variable} ${barlow.variable} ${barlowCondensed.variable} relative min-h-dvh flex-col overflow-x-clip bg-[url(../public/assets/images/bg-light-theme.png)] transition-all dark:bg-[url(../public/assets/images/bg-dark-theme.png)] md:min-h-dvh xl:py-10`}
       >
         {children}
       </body>
