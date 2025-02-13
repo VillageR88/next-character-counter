@@ -15,7 +15,7 @@ const LabelCheckbox = ({
   return (
     <label className="flex cursor-pointer items-center gap-[10px]">
       <div className="flex items-center justify-center rounded-[4px] border border-[#12131A] [transition:background-color_300ms,border-color_300ms] has-[input:checked]:border-[#C27CF8] has-[input:checked]:bg-[#C27CF8] dark:border-[#E4E4EF] [&:has(input:checked)_img]:opacity-100">
-        <Image alt="check icon" className="absolute opacity-0" src={check as string} />
+        <Image alt="check icon" className="absolute opacity-0 [transition:opacity_300ms]" src={check as string} />
         <input
           onChange={() => {
             if (inputReference.current) {

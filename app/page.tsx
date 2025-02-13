@@ -31,7 +31,7 @@ export default function Home() {
     return Math.floor(minutes);
   };
   const calculateReadTimeValue = calculateReadTime(textAreaValue);
-  const APPROX_DESCRIPTION = `Approx. reading time: ${calculateReadTimeValue < 1 ? '< 1' : calculateReadTimeValue.toString()} minute${Number(calculateReadTimeValue) <= 1 ? '' : 's'}`;
+  const APPROX_DESCRIPTION = `Approx. reading time: ${!textAreaValue ? '0' : calculateReadTimeValue <= 1 ? '< 1' : calculateReadTimeValue.toString()} minute${Number(calculateReadTimeValue) === 0 && textAreaValue ? '' : 's'}`;
 
   return (
     <>
@@ -84,7 +84,7 @@ export default function Home() {
           isExcludedSpaces={isExcludedSpaces}
           isCharacterLimit={isCharacterLimit}
         />
-        <Density textAreaValue={textAreaValue} />
+        <Density textAreaValue={textAreaValue} isExcludedSpaces={isExcludedSpaces} />
       </main>
     </>
   );

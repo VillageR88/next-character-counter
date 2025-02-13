@@ -7,6 +7,7 @@ const SummaryBoxes = ({
   isExcludedSpaces: boolean;
   isCharacterLimit: boolean;
 }) => {
+  const formattedValue = (value: number) => value.toLocaleString('number', { minimumIntegerDigits: 2 });
   return (
     <ul className="mt-[48px] flex gap-[16px]">
       {[
@@ -14,20 +15,20 @@ const SummaryBoxes = ({
           description: 'Total Characters',
           background: 'bg-[#D3A0FA]',
           pattern: 'bg-[url(../public/assets/images/pattern-character-count.svg)]',
-          amount: textAreaValue.replace(/\s+/g, '').length,
-          amount2: textAreaValue.length,
+          amount: formattedValue(textAreaValue.replace(/\s+/g, '').length),
+          amount2: formattedValue(textAreaValue.length),
         },
         {
           description: 'Word Count',
           background: 'bg-[#FF9F00]',
           pattern: 'bg-[url(../public/assets/images/pattern-word-count.svg)]',
-          amount: textAreaValue.trim().split(/\s+/).filter(Boolean).length,
+          amount: formattedValue(textAreaValue.trim().split(/\s+/).filter(Boolean).length),
         },
         {
           description: 'Sentence Count',
           background: 'bg-[#FE8159]',
           pattern: 'bg-[url(../public/assets/images/pattern-sentence-count.svg)]',
-          amount: textAreaValue.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length,
+          amount: formattedValue(textAreaValue.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length),
         },
       ].map((item, index) => {
         return (
