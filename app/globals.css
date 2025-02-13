@@ -26,3 +26,7 @@ input#max-char-input {
   user-select: unset;
   pointer-events: unset;
 }
+
+:has(input#exclude-spaces:checked) p#no-space-info {
+  opacity: 1;
+}

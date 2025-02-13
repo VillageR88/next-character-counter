@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="og:image" content={undefined} />
       </head>
       <body
-        className={`${dmSans.variable} relative flex min-h-dvh flex-col gap-[48px] overflow-x-clip bg-[url(../public/assets/images/bg-light-theme.png)] font-dmSans [transition:background_300ms] dark:bg-[url(../public/assets/images/bg-dark-theme.png)] md:min-h-dvh xl:py-10`}
+        className={`${dmSans.variable} relative flex min-h-dvh flex-col gap-[48px] overflow-x-clip bg-[url(../public/assets/images/bg-light-theme.png)] px-[16px] py-[18px] font-dmSans [transition:background_300ms] dark:bg-[url(../public/assets/images/bg-dark-theme.png)] md:p-[32px]`}
       >
         {children}
       </body>
