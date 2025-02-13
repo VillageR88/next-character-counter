@@ -1,10 +1,11 @@
 import Logo from './components/Logo';
 import LabelCheckbox from './components/LabelCheckbox';
-
+import SummaryBoxes from './components/SummaryBoxes';
 import ThemeButton from './components/ThemeButton';
 const HEAD_TITLE = 'Analyze your text\nin real-time.';
 const MAIN_INPUT_PLACEHOLDER = 'Start typing here… (or paste your text)';
 const DENSITY_TITLE = 'Letter Density';
+const DENSITY_DESCRIPTION_EMPTY = 'No characters found. Start typing to see letter density.';
 const mainSettings = {
   exclude: {
     id: 'exclude-spaces',
@@ -53,52 +54,12 @@ export default function Home() {
           </div>
           <p className="text-[#12131A] [transition:color_300ms] dark:text-[#E4E4EF]">Approx. reading time: 0 minute</p>
         </div>
-        <ul className="mt-[48px] flex gap-[16px]">
-          {[
-            {
-              description: 'Total Characters',
-              background: 'bg-[#D3A0FA]',
-              pattern: 'bg-[url(../public/assets/images/pattern-character-count.svg)]',
-            },
-            {
-              description: 'Word Count',
-              background: 'bg-[#FF9F00]',
-              pattern: 'bg-[url(../public/assets/images/pattern-word-count.svg)]',
-            },
-            {
-              description: 'Sentence Count',
-              background: 'bg-[#FE8159]',
-              pattern: 'bg-[url(../public/assets/images/pattern-sentence-count.svg)]',
-            },
-          ].map((item, index) => {
-            return (
-              <li
-                className={`flex min-h-[150px] w-full flex-col rounded-[12px] bg-[calc(100%+1.9em)_center] bg-no-repeat ${item.pattern} ${item.background} px-[16px] py-[26.5px] text-[#12131A]`}
-                key={item.background}
-              >
-                <h2 className="text-[64px] font-bold leading-[100%] tracking-[-1px]">0</h2>
-                {index === 0 ? (
-                  <div className="flex items-center gap-1">
-                    <p className="text-[20px] leading-[140%] tracking-[-0.6px]">{item.description}</p>
-                    <p
-                      id="no-space-info"
-                      className="leading-[130%] tracking-[-0.6px] opacity-0 [transition:opacity_300ms]"
-                    >
-                      (no space)
-                    </p>
-                  </div>
-                ) : (
-                  <p className="text-[20px] leading-[140%] tracking-[-0.6px]">{item.description}</p>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        <SummaryBoxes />
         <div className="mt-[24px] flex flex-col gap-[20px] text-[#12131A] dark:text-[#E4E4EF]">
           <h2 className="text-[24px] font-semibold leading-[130#] tracking-[-1px] [transition:color_300ms]">
             {DENSITY_TITLE}
           </h2>
-          <p className="[transition:color_300ms]">No characters found. Start typing to see letter density.</p>
+          <p className="[transition:color_300ms]">{DENSITY_DESCRIPTION_EMPTY}</p>
         </div>
       </main>
     </>

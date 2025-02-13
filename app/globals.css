@@ -6,6 +6,10 @@
   color-scheme: dark;
 }
 
+html.hidden {
+  display: none;
+}
+
 h1 {
   @apply whitespace-pre-wrap text-6xl font-[700] leading-[64px] tracking-[-1px];
 }
