@@ -1,9 +1,11 @@
+'use client';
 import Logo from './components/Logo';
 import LabelCheckbox from './components/LabelCheckbox';
 import SummaryBoxes from './components/SummaryBoxes';
 import ThemeButton from './components/ThemeButton';
+import MainTextarea from './components/MainTextarea';
+import { useState } from 'react';
 const HEAD_TITLE = 'Analyze your text\nin real-time.';
-const MAIN_INPUT_PLACEHOLDER = 'Start typing here… (or paste your text)';
 const DENSITY_TITLE = 'Letter Density';
 const DENSITY_DESCRIPTION_EMPTY = 'No characters found. Start typing to see letter density.';
 const mainSettings = {
@@ -16,8 +18,21 @@ const mainSettings = {
     description: 'Set Character Limit',
   },
 };
+const CHARACTERS_PER_MINUTE = 1000;
 
 export default function Home() {
+  const [textAreaValue, setTextAreaValue] = useState<string>('');
+  const [isExcludedSpaces, setIsExcludedSpace] = useState<boolean>(false);
+  const [isCharacterLimit, setIsCharacterLimit] = useState<boolean>(false);
+
+  const calculateReadTime = (text: string) => {
+    const characters = text.length;
+    const minutes = characters / CHARACTERS_PER_MINUTE;
+    return Math.floor(minutes);
+  };
+  const calculateReadTimeValue = calculateReadTime(textAreaValue);
+  const APPROX_DESCRIPTION = `Approx. reading time: ${calculateReadTimeValue < 1 ? '< 1' : calculateReadTimeValue.toString()} minute${Number(calculateReadTimeValue) <= 1 ? '' : 's'}`;
+
   return (
     <>
       <nav className="mx-auto flex w-full max-w-[990px] justify-between">
@@ -28,18 +43,28 @@ export default function Home() {
         <h1 className="mx-auto w-fit text-center text-[#12131A] [transition:color_300ms] dark:text-[#F2F2F7]">
           {HEAD_TITLE}
         </h1>
-        <label className="mt-[48px]">
-          <textarea
-            id="main-text"
-            className="min-h-[200px] w-full resize-none rounded-[12px] border-2 border-[#E4E4EF] bg-[#F2F2F7] p-[20px] text-[20px] leading-[140%] tracking-[-0.6px] text-[#2A2B37] outline-none [transition:background-color_300ms,color_300ms,border_300ms] dark:border-[#404254] dark:bg-[#2A2B37] dark:text-[#E4E4EF]"
-            placeholder={MAIN_INPUT_PLACEHOLDER}
-          />
-        </label>
+        <MainTextarea
+          passRef={(passedRef) => {
+            setTextAreaValue(passedRef);
+          }}
+        />
         <div className="mt-[16px] flex items-center justify-between">
           <div className="flex items-center gap-[24px]">
-            <LabelCheckbox id={mainSettings.exclude.id} description={mainSettings.exclude.description} />
+            <LabelCheckbox
+              passReference={(value) => {
+                setIsExcludedSpace(value);
+              }}
+              id={mainSettings.exclude.id}
+              description={mainSettings.exclude.description}
+            />
             <div id="character-div" className="flex items-center gap-[10px]">
-              <LabelCheckbox id={mainSettings.limit.id} description={mainSettings.limit.description} />
+              <LabelCheckbox
+                passReference={(value) => {
+                  setIsCharacterLimit(value);
+                }}
+                id={mainSettings.limit.id}
+                description={mainSettings.limit.description}
+              />
               <label
                 className="pointer-events-none select-none opacity-0 [transition:opacity_300ms]"
                 id="max-char-container"
@@ -52,9 +77,13 @@ export default function Home() {
               </label>
             </div>
           </div>
-          <p className="text-[#12131A] [transition:color_300ms] dark:text-[#E4E4EF]">Approx. reading time: 0 minute</p>
+          <p className="text-[#12131A] [transition:color_300ms] dark:text-[#E4E4EF]">{APPROX_DESCRIPTION}</p>
         </div>
-        <SummaryBoxes />
+        <SummaryBoxes
+          textAreaValue={textAreaValue}
+          isExcludedSpaces={isExcludedSpaces}
+          isCharacterLimit={isCharacterLimit}
+        />
         <div className="mt-[24px] flex flex-col gap-[20px] text-[#12131A] dark:text-[#E4E4EF]">
           <h2 className="text-[24px] font-semibold leading-[130#] tracking-[-1px] [transition:color_300ms]">
             {DENSITY_TITLE}
