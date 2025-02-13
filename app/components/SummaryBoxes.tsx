@@ -1,12 +1,4 @@
-const SummaryBoxes = ({
-  textAreaValue,
-  isExcludedSpaces,
-  isCharacterLimit,
-}: {
-  textAreaValue: string;
-  isExcludedSpaces: boolean;
-  isCharacterLimit: boolean;
-}) => {
+const SummaryBoxes = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: string; isExcludedSpaces: boolean }) => {
   const formattedValue = (value: number) => value.toLocaleString('number', { minimumIntegerDigits: 2 });
   return (
     <ul className="mt-[48px] flex gap-[16px]">

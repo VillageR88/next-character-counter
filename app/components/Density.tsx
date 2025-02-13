@@ -27,7 +27,7 @@ const Density = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: string; i
               <div className="h-[12px] w-full max-w-[859px] rounded-[999px] bg-[#F2F2F7] [transition:background_300ms] dark:bg-[#21222C]">
                 <div
                   style={{ width: `${((calculationMap[x] / textAreaValue.length) * 100).toString()}%` }}
-                  className="min-h-full rounded-[999px] bg-[#D3A0FA]"
+                  className="min-h-full rounded-[999px] bg-[#D3A0FA] [transition:300ms]"
                 />
               </div>
               <p className="ml-auto leading-[130%] tracking-[-0.6px] [transition:color_300ms]">

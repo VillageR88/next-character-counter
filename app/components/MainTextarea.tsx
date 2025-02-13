@@ -3,7 +3,13 @@ import { useRef } from 'react';
 
 const MAIN_INPUT_PLACEHOLDER = 'Start typing here… (or paste your text)';
 
-const MainTextarea = ({ passRef }: { passRef: (arg0: string) => void }) => {
+const MainTextarea = ({
+  passRef,
+  isCharacterLimit,
+}: {
+  passRef: (arg0: string) => void;
+  isCharacterLimit: boolean;
+}) => {
   const mainRef = useRef<null | HTMLTextAreaElement>(null);
 
   return (
