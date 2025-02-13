@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root.dark {
+  color-scheme: dark;
+}
+
 h1 {
   @apply whitespace-pre-wrap text-6xl font-[700] leading-[64px] tracking-[-1px];
 }
 
 textarea::placeholder {
   @apply text-[#2A2B37] dark:text-[#E4E4EF];
-  transition: color 300ms;
+  transition: color 100ms;
 }
 
 input::-webkit-outer-spin-button,
