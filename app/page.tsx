@@ -5,9 +5,9 @@ import SummaryBoxes from './components/SummaryBoxes';
 import ThemeButton from './components/ThemeButton';
 import MainTextarea from './components/MainTextarea';
 import { useState } from 'react';
+import Density from './components/Density';
 const HEAD_TITLE = 'Analyze your text\nin real-time.';
-const DENSITY_TITLE = 'Letter Density';
-const DENSITY_DESCRIPTION_EMPTY = 'No characters found. Start typing to see letter density.';
+
 const mainSettings = {
   exclude: {
     id: 'exclude-spaces',
@@ -44,8 +44,8 @@ export default function Home() {
           {HEAD_TITLE}
         </h1>
         <MainTextarea
-          passRef={(passedRef) => {
-            setTextAreaValue(passedRef);
+          passRef={(value) => {
+            setTextAreaValue(value);
           }}
         />
         <div className="mt-[16px] flex items-center justify-between">
@@ -84,12 +84,7 @@ export default function Home() {
           isExcludedSpaces={isExcludedSpaces}
           isCharacterLimit={isCharacterLimit}
         />
-        <div className="mt-[24px] flex flex-col gap-[20px] text-[#12131A] dark:text-[#E4E4EF]">
-          <h2 className="text-[24px] font-semibold leading-[130#] tracking-[-1px] [transition:color_300ms]">
-            {DENSITY_TITLE}
-          </h2>
-          <p className="[transition:color_300ms]">{DENSITY_DESCRIPTION_EMPTY}</p>
-        </div>
+        <Density textAreaValue={textAreaValue} />
       </main>
     </>
   );
