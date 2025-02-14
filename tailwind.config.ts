@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        screen1200: '1200px',
+        screen1024: '1024px',
       },
       fontFamily: {
         dmSans: ['var(--font-dm-sans)'],

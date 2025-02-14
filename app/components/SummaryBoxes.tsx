@@ -1,7 +1,8 @@
+const NO_SPACE_DESCRIPTION = '(no space)';
 const SummaryBoxes = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: string; isExcludedSpaces: boolean }) => {
   const formattedValue = (value: number) => value.toLocaleString('number', { minimumIntegerDigits: 2 });
   return (
-    <ul className="mt-[48px] flex gap-[16px]">
+    <ul className="mt-[48px] flex flex-col gap-[16px] md:flex-row">
       {[
         {
           description: 'Total Characters',
@@ -43,8 +44,11 @@ const SummaryBoxes = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: stri
             {index === 0 ? (
               <div className="flex items-center gap-1">
                 <p className="text-[20px] leading-[140%] tracking-[-0.6px]">{item.description}</p>
-                <p id="no-space-info" className="leading-[130%] tracking-[-0.6px] opacity-0 [transition:opacity_300ms]">
-                  (no space)
+                <p
+                  id="no-space-info"
+                  className="leading-[130%] tracking-[-0.6px] opacity-0 [transition:opacity_300ms] md:absolute md:bottom-2 screen1024:relative screen1024:-bottom-px"
+                >
+                  {NO_SPACE_DESCRIPTION}
                 </p>
               </div>
             ) : (

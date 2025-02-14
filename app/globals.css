@@ -11,7 +11,7 @@ html.hidden {
 }
 
 h1 {
-  @apply whitespace-pre-wrap text-6xl font-[700] leading-[64px] tracking-[-1px];
+  @apply whitespace-pre-wrap text-[40px] font-[700] leading-[110%] tracking-[-1px] md:text-6xl md:leading-[64px];
 }
 
 textarea::placeholder {

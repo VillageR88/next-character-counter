@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 const DENSITY_TITLE = 'Letter Density';
 const DENSITY_DESCRIPTION_EMPTY = 'No characters found. Start typing to see letter density.';
-const SEE_DESCRIPTION = 'See more';
 
 const calculateHeight = (isExpanded: boolean, calculationMap: Record<string, number>, isExcludedSpaces: boolean) => {
   const itemHeight = 20.8; // height of each item in px
@@ -14,11 +13,14 @@ const calculateHeight = (isExpanded: boolean, calculationMap: Record<string, num
   if (isExpanded) {
     return `${(Object.keys(calculationMap).length * (itemHeight + gapHeight) - gapHeight - excludedSpaceHeight).toString()}px`;
   }
-  return `${(184.8 - excludedSpaceHeight).toString()}px`;
+  return `${(150 - excludedSpaceHeight).toString()}px`;
 };
 
 const Density = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: string; isExcludedSpaces: boolean }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+  const SEE_DESCRIPTION = `See ${isExpanded ? 'less' : 'more'}`;
+
   const calculationMap = {} as Record<string, number>;
   for (const item of textAreaValue.split('')) {
     if (calculationMap[item]) calculationMap[item]++;
@@ -41,7 +43,7 @@ const Density = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: string; i
           {Object.keys(calculationMap).map((x, i) => (
             <li
               key={x}
-              className={`${(x === ' ' && isExcludedSpaces) || (i > 5 && !isExpanded) ? 'absolute opacity-0' : 'opacity-100 [animation:fade-in_300ms] [transition:opacity_300ms]'} flex items-center gap-[14px]`}
+              className={`${(x === ' ' && isExcludedSpaces) || (i >= 5 && !isExpanded) ? 'absolute opacity-0' : 'opacity-100 [animation:fade-in_300ms] [transition:opacity_300ms]'} flex items-center gap-[14px]`}
             >
               <div className="flex h-[12px] min-w-[16px] items-center">
                 <p className="leading-[130%] tracking-[-0.6px] [transition:color_300ms]">{x.toUpperCase()}</p>

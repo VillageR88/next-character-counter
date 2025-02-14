@@ -34,8 +34,8 @@ const MainCheckboxArea = ({
   const APPROX_DESCRIPTION = `Approx. reading time: ${!textAreaValue ? '0' : calculateReadTimeValue < 1 ? '< 1' : calculateReadTimeValue.toString()} minute${Number(calculateReadTimeValue) < 2 && textAreaValue ? '' : 's'}`;
 
   return (
-    <div className="mt-[16px] flex items-center justify-between">
-      <div className="flex items-center gap-[24px]">
+    <div className="mt-[16px] flex flex-col justify-between gap-[12px] md:flex-row md:items-center">
+      <div className="flex flex-col gap-[12px] md:flex-row md:items-center md:gap-[24px]">
         <LabelCheckbox
           passReference={(value) => {
             setIsExcludedSpace(value);
