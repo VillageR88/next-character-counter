@@ -31,28 +31,28 @@ const SummaryBoxes = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: stri
           >
             <>
               <h2
-                className={`${isExcludedSpaces && index === 0 ? 'opacity-100' : index === 0 ? 'opacity-0' : 'opacity-100'} absolute top-[25px] text-[64px] font-bold leading-[100%] tracking-[-1px] [transition:opacity_300ms]`}
+                className={`${isExcludedSpaces && index === 0 ? 'opacity-100' : index === 0 ? 'opacity-0' : 'opacity-100'} absolute top-[35px] text-[40px] font-bold leading-[100%] tracking-[-1px] [transition:opacity_300ms] md:top-[25px] md:text-[64px]`}
               >
                 {item.amount.toString()}
               </h2>
               <h2
-                className={`${isExcludedSpaces ? 'opacity-0' : 'opacity-100'} absolute top-[25px] text-[64px] font-bold leading-[100%] tracking-[-1px] [transition:opacity_300ms]`}
+                className={`${isExcludedSpaces ? 'opacity-0' : 'opacity-100'} absolute top-[35px] text-[40px] font-bold leading-[100%] tracking-[-1px] [transition:opacity_300ms] md:top-[25px] md:text-[64px]`}
               >
                 {item.amount2}
               </h2>
             </>
             {index === 0 ? (
-              <div className="flex items-center gap-1">
+              <div className="mb-1 flex items-center gap-1 md:mb-0">
                 <p className="text-[20px] leading-[140%] tracking-[-0.6px]">{item.description}</p>
                 <p
                   id="no-space-info"
-                  className="leading-[130%] tracking-[-0.6px] opacity-0 [transition:opacity_300ms] md:absolute md:bottom-2 screen1024:relative screen1024:-bottom-px"
+                  className="bottom-4 leading-[130%] tracking-[-0.6px] opacity-0 [transition:opacity_300ms] md:absolute md:bottom-2 screen1024:relative screen1024:-bottom-px"
                 >
                   {NO_SPACE_DESCRIPTION}
                 </p>
               </div>
             ) : (
-              <p className="text-[20px] leading-[140%] tracking-[-0.6px]">{item.description}</p>
+              <p className="mb-1 text-[20px] leading-[140%] tracking-[-0.6px] md:mb-0">{item.description}</p>
             )}
           </li>
         );

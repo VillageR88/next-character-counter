@@ -52,6 +52,7 @@ const MainCheckboxArea = ({
             description={mainSettings.limit.description}
           />
           <label
+            htmlFor="max-char-input"
             className="pointer-events-none select-none opacity-0 [transition:opacity_300ms]"
             id="max-char-container"
           >
