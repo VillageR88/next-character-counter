@@ -28,6 +28,7 @@ export default function Home() {
             setTextAreaValue(value);
           }}
           isCharacterLimit={isCharacterLimit}
+          limitValue={limitValue}
         />
         <MainCheckboxArea
           textAreaValue={textAreaValue}

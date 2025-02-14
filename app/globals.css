@@ -38,3 +38,12 @@ input#max-char-input {
 :has(input#exclude-spaces:checked) p#no-space-info {
   opacity: 1;
 }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
