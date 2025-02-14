@@ -6,6 +6,17 @@ const DENSITY_TITLE = 'Letter Density';
 const DENSITY_DESCRIPTION_EMPTY = 'No characters found. Start typing to see letter density.';
 const SEE_DESCRIPTION = 'See more';
 
+const calculateHeight = (isExpanded: boolean, calculationMap: Record<string, number>, isExcludedSpaces: boolean) => {
+  const itemHeight = 20.8; // height of each item in px
+  const gapHeight = 12; // gap between items in px
+  const excludedSpaceHeight = isExcludedSpaces && calculationMap[' '] ? itemHeight + gapHeight : 0;
+
+  if (isExpanded) {
+    return `${(Object.keys(calculationMap).length * (itemHeight + gapHeight) - gapHeight - excludedSpaceHeight).toString()}px`;
+  }
+  return `${(184.8 - excludedSpaceHeight).toString()}px`;
+};
+
 const Density = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: string; isExcludedSpaces: boolean }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const calculationMap = {} as Record<string, number>;
@@ -21,7 +32,12 @@ const Density = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: string; i
       {textAreaValue.length === 0 ? (
         <p className="[transition:color_300ms]">{DENSITY_DESCRIPTION_EMPTY}</p>
       ) : (
-        <ul className="flex flex-col gap-[12px]">
+        <ul
+          style={{
+            height: calculateHeight(isExpanded, calculationMap, isExcludedSpaces),
+          }}
+          className="flex flex-col gap-[12px] [transition:150ms]"
+        >
           {Object.keys(calculationMap).map((x, i) => (
             <li
               key={x}
