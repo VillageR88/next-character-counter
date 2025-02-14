@@ -22,7 +22,7 @@ const Density = ({ textAreaValue, isExcludedSpaces }: { textAreaValue: string; i
   const SEE_DESCRIPTION = `See ${isExpanded ? 'less' : 'more'}`;
 
   const calculationMap = {} as Record<string, number>;
-  for (const item of textAreaValue.split('')) {
+  for (const item of textAreaValue.toLowerCase().split('')) {
     if (calculationMap[item]) calculationMap[item]++;
     else calculationMap[item] = 1;
   }
